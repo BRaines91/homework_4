@@ -50,7 +50,7 @@ var iSelectedAnswer = [];
 	var t;
 $(document).ready(function () 
 {
-    // Display the first question
+    
     displayCurrentQuestion();
     $(this).find(".quizMessage").hide();
     $(this).find(".preButton").attr('disabled', 'disabled');
@@ -68,7 +68,7 @@ $(document).ready(function ()
 			  $(".preButton").attr('disabled', 'disabled');
 			}
 			
-				currentQuestion--; // Since we have already displayed the first question on DOM ready
+				currentQuestion--;
 				if (currentQuestion < questions.length) 
 				{
 					displayCurrentQuestion();
@@ -82,7 +82,7 @@ $(document).ready(function ()
     });
 
 	
-	// On clicking next, display the next question
+	
     $(this).find(".nextButton").on("click", function () 
 	{
         if (!quizOver) 
@@ -97,7 +97,7 @@ $(document).ready(function ()
             } 
 			else 
 			{
-                // TODO: Remove any message -> not sure if this is efficient to call this each time....
+               
                 $(document).find(".quizMessage").hide();
 				if (val == questions[currentQuestion].correctAnswer) 
 				{
@@ -105,7 +105,7 @@ $(document).ready(function ()
 				}
 				iSelectedAnswer[currentQuestion] = val;
 				
-				currentQuestion++; // Since we have already displayed the first question on DOM ready
+				currentQuestion++; 
 				if(currentQuestion >= 1) {
 					  $('.preButton').prop("disabled", false);
 				}
@@ -130,7 +130,7 @@ $(document).ready(function ()
 					
 		}	
 		else 
-		{ // quiz is over and clicked the next button (which now displays 'Play Again?'
+		{ 
 			quizOver = false; $('#iTimeShow').html('Time Remaining:'); iSelectedAnswer = [];
 			$(document).find(".nextButton").text("Next Question");
 			$(document).find(".preButton").text("Previous Question");
@@ -185,14 +185,14 @@ function displayCurrentQuestion()
 {
 
 	if(c == 185) { c = 180; timedCount(); }
-    //console.log("In display current Question");
+    
     var question = questions[currentQuestion].question;
     var questionClass = $(document).find(".quizContainer > .question");
     var choiceList = $(document).find(".quizContainer > .choiceList");
     var numChoices = questions[currentQuestion].choices.length;
-    // Set the questionClass text to the current question
+    
     $(questionClass).text(question);
-    // Remove all current <li> elements (if any)
+    
     $(choiceList).find("li").remove();
     var choice;
 	
@@ -227,7 +227,7 @@ function hideScore()
     $(document).find(".result").hide();
 }
 
-// This displays the current question AND the choices
+
 function viewResults() 
 {
 
@@ -239,9 +239,9 @@ function viewResults()
     var questionClass = $(document).find(".quizContainer > .question");
     var choiceList = $(document).find(".quizContainer > .choiceList");
     var numChoices = questions[currentQuestion].choices.length;
-    // Set the questionClass text to the current question
+   
     $(questionClass).text(question);
-    // Remove all current <li> elements (if any)
+   
     $(choiceList).find("li").remove();
     var choice;
 	
